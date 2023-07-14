@@ -1,4 +1,4 @@
-// Ya borre o modifique todos los comentarios que no queria que estuvieran
+
 
 /* Carga inicial*/
 
