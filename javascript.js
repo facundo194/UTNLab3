@@ -12,49 +12,44 @@ $(document).ready(function () {
     objDescripcionModi = document.getElementById("formArticulosEntDescripcionModi");
     $("#orden").val("codArt"); //Orden inicial
     $("#contenedorTablaArticulos").attr("className", "contenedorActivo");
+    $("#btEnvioFormModi").attr("disabled", true);
+    $("#btEnvioFormAlta").attr("disabled", true);
+    // Oculto las ventanas modales
     $("#ventanaModalFormularioAlta").css("visibility", "hidden");
     $("#ventanaModalFormularioModi").css("visibility", "hidden");
     $("#ventanaModalRespuesta").css("visibility", "hidden");
-    $("#btEnvioFormModi").attr("disabled", true);
-    $("#btEnvioFormAlta").attr("disabled", true);
     llenaFamilias();
 });
 
 
-/*Eventos de ventanas modales*/
-
+// Cierre de ventana alta
 $(document).ready(function () {
     $("#btCruzFormularioAlta").click(function () {
-
         $("#contenedorTablaArticulos").attr("className", "contenedorTabla");
         $("#contenedorTablaArticulos").attr("className", "contenedorActivo");
         $("#ventanaModalFormularioAlta").css("visibility", "hidden");
     });
 });
 
-
+// Cierre de ventana modificacion
 $(document).ready(function () {
     $("#btCruzFormularioModi").click(function () {
-
         $("#contenedorTablaArticulos").attr("class", "contenedorTabla");
         $("#contenedorTablaArticulos").attr("className", "contenedorActivo");
         $("#ventanaModalFormularioModi").css("visibility", "hidden");
-
     });
 });
 
 
-
+// Cierre de ventana respuesta servidor
 $(document).ready(function () {
     $("#btCruzRespuesta").click(function () {
-
         $("#contenedorTablaArticulos").attr("class", "contenedorTabla");
         $("#contenedorTablaArticulos").attr("className", "contenedorActivo");
         $("#ventanaModalRespuesta").css("visibility", "hidden");
         $("#contenidoModalRespuesta").empty();
         $("#ventanaModalFormularioModi").css("visibility", "hidden");
         $("#ventanaModalFormularioAlta").css("visibility", "hidden");
-
     });
 });
 
@@ -64,7 +59,7 @@ $(document).ready(function () {
 
 /*Tablas*/
 
-
+// carga tabla
 $(document).ready(function () {
     $("#btAccionCarga").click(function () {
         cargaTabla();
@@ -72,13 +67,14 @@ $(document).ready(function () {
 });
 
 
-
+// vacia tabla
 $(document).ready(function () {
     $("#btAccionVacia").click(function () {
         $("#tbDatos").empty();
     });
 });
 
+// limpia filtros
 $(document).ready(function () {
     $("#btLimpiaFiltros").click(function () {
         limpiaFiltros();
@@ -87,31 +83,31 @@ $(document).ready(function () {
 
 
 
-
+// boton alta
 $(document).ready(function () {
     $("#btAlta").click(function () {
         $("#contenedorTablaArticulos").attr("className", "contenedorPasivo");
         $("#ventanaModalFormularioAlta").css("visibility", "visible");
-        vaciaFormulario(); 
-        llenaFamiliasAlta(); 
+        vaciaFormulario();
+        llenaFamiliasAlta();
+    });
+});
+
+// ORDENAMIENTO
+$(document).ready(function () {
+    $("#th_articulos_codArt").click(function () {
+        $("#orden").val("codArt"); //Por defecto se ordenara por codArd
+        cargaTabla();
     });
 });
 
 
 $(document).ready(function () {
-    $("#th_articulos_codArt").click(function () {
-        $("#orden").val("codArt"); //Por defecto se ordenara por codArd
-        cargaTabla();
-    });	
-}); 
-
-
-$(document).ready(function () {
     $("#th_articulos_familia").click(function () {
-        $("#orden").val("familia"); 
+        $("#orden").val("familia");
         cargaTabla();
-    });	
-}); 
+    });
+});
 
 
 $(document).ready(function () {
@@ -119,45 +115,45 @@ $(document).ready(function () {
         $("#orden").val("descripcion");
         cargaTabla();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#th_articulos_um").click(function () {
         $("#orden").val("um");
         cargaTabla();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#th_articulos_fechaAlta").click(function () {
         $("#orden").val("fechaAlta");
         cargaTabla();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#th_articulos_saldoStock").click(function () {
         $("#orden").val("saldoStock");
         cargaTabla();
     });
-}); 
+});
+
+// FIN ORDENAMIENTO
 
 
-/* Formularios */
+/* Boton envio formulario modi y alta,   */
 
 $(document).ready(function () {
     $("#btEnvioFormModi").click(function () {
-        modi();
+        modi(); 
     });
 });
 
 $(document).ready(function () {
     $("#btEnvioFormAlta").click(function () {
-        alta();
+        alta();  
     });
 });
-
-
 
 
 
@@ -168,33 +164,26 @@ $(document).ready(function () {
     $("#formArticulosEntCodArtAlta").keyup(function () {
         todoListoParaAlta();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntDescripcionAlta").keyup(function () {
         todoListoParaAlta();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntUmAlta").keyup(function () {
         todoListoParaAlta();
     });
-}); 
+});
 
 
-$(document).ready(function () {
-    $("#formArticulosEntSaldoStockAlta").keyup(function () {
-        todoListoParaAlta();
-    });
-}); 
-
-// $("#formArticulosEntFechaAltaAlta").change
 $(document).ready(function () {
     $("#formArticulosEntFechaAltaAlta").change(function () {
         todoListoParaAlta();
     });
-}); 
+});
 
 
 /*Valida formulario de modificacion*/
@@ -203,7 +192,7 @@ $(document).ready(function () {
     $("#formArticulosEntCodArtModi").keyup(function () {
         todoListoParaModi();
     });
-}); 
+});
 
 
 
@@ -211,45 +200,31 @@ $(document).ready(function () {
     $("#formArticulosEntDescripcionModi").keyup(function () {
         todoListoParaModi();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntFamiliaModi").change(function () {
         todoListoParaModi();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntDescricionModi").change(function () {
         todoListoParaModi();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntUmModi").change(function () {
         todoListoParaModi();
     });
-}); 
+});
 
 $(document).ready(function () {
     $("#formArticulosEntFechaAltaModi").change(function () {
         todoListoParaModi();
     });
-}); 
-
-$(document).ready(function () {
-    $("#formArticulosEntSaldoStockModi").keyup(function () {
-        todoListoParaModi();
-    });
-}); 
-
-
-$(document).ready(function () {
-    $("#btCierraSesion").click(function () {
-        location.href = "../destruirsesion.php";
-    });
 });
-
 
 
 
@@ -292,7 +267,7 @@ function cargaTabla() {
             f_articulos_um: $("#f_articulos_um").val(),
             f_articulos_fechaAlta: $("#f_articulos_fechaAlta").val()
         },
-        success: function (respuestaDelServer, estado) { 
+        success: function (respuestaDelServer, estado) {
             $("#tbDatos").empty();
             //alert(respuestaDelServer); // esto despues tengo que descomentarlo
 
@@ -315,24 +290,10 @@ function cargaTabla() {
                 objTd.innerHTML = argValor.um;
                 objTr.appendChild(objTd);
 
-                /*
-                var objTd=document.createElement("td");
-                objTd.setAttribute("campo-dato","articulos_descripcion");
-                objTd.innerHTML=argValor.descripcion;
-                objTr.appendChild(objTd);
-                */
-
                 var objTd = document.createElement("td");
                 objTd.setAttribute("campo-dato", "articulos_fechaAlta");
                 objTd.innerHTML = argValor.fechaAlta;
                 objTr.appendChild(objTd);
-
-                /*			
-                var objTd=document.createElement("td");
-                objTd.setAttribute("campo-dato","articulos_saldoStock");
-                objTd.innerHTML=argValor.saldoStock;
-                objTr.appendChild(objTd);
-                */
 
                 // PDF
                 var objTd = document.createElement("td");
@@ -343,10 +304,11 @@ function cargaTabla() {
                     $("#contenedorTablaArticulos").attr("className", "contenedorPasivo");
                     $("#ventanaModalRespuesta").css("visibility", "visible");
                     traeDoc(argValor.codArt);
+                    console.log(argValor.codArt);
                 }
                 objTr.appendChild(objTd);
 
-                
+
 
 
                 var objTd = document.createElement("td");
@@ -379,7 +341,7 @@ function cargaTabla() {
             $("#totalRegistros").html("Nro de registros: " + objJson.articulos.length);
 
         }
-    }); 
+    });
 
 }
 
@@ -403,7 +365,7 @@ function CompletaFichaArticulo(argArticulo) {
             $("#formArticulosEntfechaAltaModi").val(objetoDato.fechaAlta);
             //$("#formArticulosEntSaldoStockModi").val(objetoDato.saldoStock);
             todoListoParaModi(); //habilita el boton de enviar 
-        } 
+        }
     });
 }
 
@@ -421,7 +383,7 @@ function vaciaFormulario() {
 
 
 
-function llenaFamilias() { 
+function llenaFamilias() {
     $("#f_articulos_familia").empty();
     var objAjax = $.ajax({
         type: "get",
@@ -450,7 +412,7 @@ function llenaFamilias() {
 
 
 
-function llenaFamiliasAlta() { 
+function llenaFamiliasAlta() {
     $("#formArticulosEntFamiliaAlta").empty();
     var objAjax = $.ajax({
         type: "get",
@@ -471,8 +433,8 @@ function llenaFamiliasAlta() {
 
             });
             return true;
-        } 
-    }); 
+        }
+    });
 }
 
 
@@ -505,8 +467,8 @@ function llenaFamiliasModi() {
 
             });
             return true;
-        } 
-    }); 
+        }
+    });
 }
 
 
@@ -525,7 +487,7 @@ function consultaDatos(codArt) {
         type: "get",
         url: "./isBloqueado.php",
         data: { codArt: codArt }
-    }); 
+    });
 
     // segunda 
     var promesaPrecio = $.ajax({
@@ -533,7 +495,7 @@ function consultaDatos(codArt) {
         type: "get",
         url: "./precio.php",
         data: { codArt: codArt }
-    }); 
+    });
 
 
     $.when(promesaIsBloqueado, promesaPrecio).done(function (respuestaDelServerIsBloqueado, respuestaDelServerPrecio) {
@@ -575,12 +537,12 @@ function modi() {
 
                 $("#ventanaModalFormulario").css("visibility", "hidden");
 
-            } 
+            }
 
-        }); 
-       
-    } 
-    
+        });
+
+    }
+
 }
 
 
@@ -608,12 +570,12 @@ function alta() {
 
                 $("#ventanaModalFormulario").css("visibility", "hidden");
 
-            } 
+            }
 
-        }); 
-       
-    } 
-   
+        });
+
+    }
+
 
 }
 
@@ -634,31 +596,31 @@ function baja(argArticulo) {
                 $("#contenidoModalRespuesta").append(respuestaDelServer);
                 $("#ventanaModalFormulario").css("visibility", "hidden");
 
-            } 
-        }); 
-    } 
+            }
+        });
+    }
 }
 
 
 function traeDoc(argArticulo) {
-    if (confirm("¿Está seguro de traer este dato? ")) {
+    //if (confirm("¿Está seguro de traer este dato? ")) {
 
         var objAjax = $.ajax({
-            type: "get",
+            type: "post",
             url: "./traeDoc.php",
             data: {
                 codArt: argArticulo
             },
-            success: function (respuestaDelServer) { 
-                //alert("Respuesta del SERVER desde adentro del success:"+ respuestaDelServer);
+            success: function (respuestaDelServer) {
+                //alert("Respuesta del server"+ respuestaDelServer);
                 objetoDato = JSON.parse(respuestaDelServer);
                 $("#ventanaModalRespuesta").css("visibility", "visible");
                 $("#contenidoModalRespuesta").empty();
                 $("#contenidoModalRespuesta").html("<iframe width='100%' height='600px' src='data:application/pdf;base64," + objetoDato.documentoPdf + "'></iframe>");
 
-            } 
-        }); 
-    } 
+            }
+        });
+    //}
 
     cargaTabla();
 

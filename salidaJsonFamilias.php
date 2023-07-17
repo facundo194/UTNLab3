@@ -1,8 +1,4 @@
-<?php 
-
-
-
-
+<?php include("manejoSesion.inc");    
 require('conexion.php');
 
 $sql= "select * from familias";

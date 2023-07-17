@@ -1,6 +1,4 @@
-
-<?php 
-
+<?php include("manejoSesion.inc"); 
 require('conexion.php');
 $codArt =$_POST['codArt'];
 

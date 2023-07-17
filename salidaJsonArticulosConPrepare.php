@@ -1,8 +1,17 @@
 <?php 
+session_start();
+if (!isset($_SESSION['idEjer14Session'])){
+    header('Location:../index.php');
+    exit();
+    //echo $_SESSION['idEjer14Session'];
+}
+else{
+    //echo "che";
+}
 
 
-
-    require('conexion.php');
+    //echo $_SESSION['idEjer14Session'];   
+require('conexion.php');
 
 
 
@@ -34,7 +43,7 @@
 
     
     
-    sleep(1.5);
+    //sleep(1.5);
 
     $stmt -> setFetchMode(PDO::FETCH_ASSOC);
 
